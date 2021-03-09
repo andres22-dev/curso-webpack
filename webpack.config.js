@@ -4,6 +4,8 @@
   //Necesitamos instalar nada
 
 const path = require('path');
+//traemos esta dependencia que la instalamos con un comando de npm previamente
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //Creamos un modulo que vamos a exportar con un objeto que va a tener
  // La configuracion deseada de nuestro proyecto
@@ -48,7 +50,39 @@ module.exports = {
           //identificar webpack para leer los archivos que hay dentro de
             // nuestro proyecto
     extensions:['.js'],
-  }
+  },
+//modulo que tiene un objeto
+  module:{
+    //que tiene unas reglas pra establecer  un arreglo donde voy a tener
+      //distintas configuraciones dependiendo de lo que le agregue a esas variables
+    rules :[
+    {
+      test: /\.m?js$/,
+      exclude: /node_modules/,
+      use: {
+
+        loader: 'babel-loader'
+      }
+
+    }
+  ]
+  },
+
+  plugins: [
+    //hacemos una instancia de lo que definimos en el inicio del archivo
+      // le anadimos por parametro un objeto donde vamos a tener las 
+        //configuraciones que le vamos anadir a nuestro plugin
+    new HtmlWebpackPlugin({
+
+      //inyecta el bundle al template html
+      inject: true,
+      //la ruta al template html
+      template: './public/index.html',
+      //nombre final del archivo
+      filename: './index.html' 
+
+    })
+  ]
 
 
 
