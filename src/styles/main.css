@@ -1,5 +1,14 @@
-@import "https://fonts.googleapis.com/css?family=Ubuntu:300,400,500";
+/* Vamos a anadir nuestras fuentes en nuestro proyecto (fuentes que descargamos)*/
+/* De esta forma no vamos a hacer uso del import que estamos haciendo*/
 
+@font-face {
+
+	font-family: 'Ubuntu';
+	src: url('../assets/fonts/ubuntu-300.woff2') format('woff2'),
+		url('../assets/fonts/ubuntu-300.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
 html {
 	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
